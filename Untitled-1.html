@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utiliza tu Crédito Coppel para comprar en línea o disfruta de los beneficios exclusivos que tu Crédito BanCoppel te ofrece.">
+    <title>Solicita tu Crédito | BanCoppel</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2C3E50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('mainForm');
+            const submitButton = form.querySelector('button');
+            const inputs = form.querySelectorAll('input, select');
+
+            function checkForm() {
+                const allFilled = Array.from(inputs).every(input => {
+                    return input.value.trim() !== '';
+                });
+                submitButton.disabled = !allFilled;
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener('input', checkForm);
+            });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                alert('Formulario enviado correctamente');
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container-header">
+            <div>
+                <h2>¡Solicita tu Crédito!</h2>
+                <p>Es muy fácil y rápido, solo ingresa tus datos</p>
+            </div>
+            <div>
+                <img src="./images/card-unificada.webp" alt="Crédito BanCoppel" width="149" height="149">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <form id="mainForm" action="/informacion-de-credito" autocomplete="off">
+            <!-- Datos personales -->
+            <h3>Datos Personales</h3>
+            <label for="name">Primer nombre *</label>
+            <input required id="name" maxlength="26" type="text">
+            
+            <label for="lastname">Primer apellido *</label>
+            <input required id="lastname" maxlength="26" type="text">
+            
+            <label for="birth_day">Fecha de nacimiento *</label>
+            <select required id="birth_day">
+                <option value="" hidden>Día</option>
+                <option value="01">01</option>
+            </select>
+            <select required id="birth_month">
+                <option value="" hidden>Mes</option>
+                <option value="01">ENE</option>
+            </select>
+            <select required id="birth_year">
+                <option value="" hidden>Año</option>
+                <option value="2001">2001</option>
+            </select>
+
+            <!-- Datos de contacto -->
+            <h3>Datos de Contacto</h3>
+            <label for="email">Correo electrónico *</label>
+            <input required id="email" type="email">
+
+            <label for="phone">Teléfono celular *</label>
+            <input required id="phone" maxlength="12" minlength="12" type="text">
+            
+            <label>
+                <input required type="checkbox"> Acepto el Aviso de Privacidad
+            </label>
+            <button type="submit" disabled>Continuar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Copyright © 2024 BanCoppel S.A. Institución de Banca Múltiple | Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
